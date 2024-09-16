@@ -34,7 +34,10 @@ watchEffect(()=>{
   console.log('命令模式')
 })
 
-
+const doTab = () =>{
+  lctrIdx++
+  if(lctrIdx>=locators.length) lctrIdx=0
+}
 </script>
 
 <template>
@@ -48,7 +51,7 @@ watchEffect(()=>{
       ref="ipt"
       ::="q"
       :placeholder="locator.rawurl"
-      @keydown.tab.prevent="lctrIdx++"
+      @keydown.tab.prevent="doTab"
       px4 bg-hex-8883 flex-1
       rounded-l-4
       outline="none active:none">
