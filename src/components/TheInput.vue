@@ -5,19 +5,22 @@ const iptRef = $(useTemplateRef('ipt'))
 onMounted(() => {
   iptRef?.focus()
 })
+const go = () => {
+  search(locator,q)
+  q = ''
+}
 </script>
 
 <template>
-  <form @submit.prevent="search(locator,q)"
-    h10 flex>
+  <form @submit.prevent="go"
+    h10 flex min-w300px>
     <input
       type="text"
       ref="ipt"
       ::="q"
-      px4
-      bg-hex-8883
-      border="~ transparent rounded-l focus:zinc-800 focus:dark:zinc-400"
+      px4 bg-hex-8883 flex-1
+      rounded-l-4
       outline="none active:none">
-    <button px4 rounded-r bg-hex-8883>Search</button>
+    <button px4 rounded-r-4 shadow="inner hex-8883 active:hex-8881" outline-none transition="100">Search</button>
   </form>
 </template>

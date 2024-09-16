@@ -2,11 +2,15 @@
 const locator = $ref('https://www.bing.com/search?q=%s')
 </script>
 <template>
-  <main font-sans p4 flex="~ col justify-center items-center gap2" text="center gray-700 dark:gray-200">
+  <!-- <main font-sans p4 flex="~ col justify-center items-center gap2" text="center gray-700 dark:gray-200"> -->
+  <div pos-absolute top-25 w-full flex="~ justify-center">
     <TheInput
       ::locator="locator"
       placeholder="typing in title"
-      autocomplete="false" />
-    <TheFooter />
-  </main>
+      autocomplete="false" 
+      w="33%"
+      />
+  </div>
+  <TheFooter pos-absolute top-2 left-2 />
+  <!-- </main> -->
 </template>
