@@ -13,7 +13,11 @@ const locators = $ref([
     rawurl:'duckduckgo.com/?q=%s'
   }
 ])
-let locator = $ref(locators[0])
+let lctrIdx = $ref(0)
+let locator = $computed({
+  get:()=>locators[lctrIdx % locators.length],
+  set:v=>lctrIdx=locators.indexOf(v)
+})
 let q = $ref('')
 const iptRef = $(useTemplateRef('ipt'))
 onMounted(() => {
@@ -32,7 +36,7 @@ watchEffect(()=>{
 
 <template>
   <select ::="locator" bg-hex-8883 rounded-4 pl4>
-    <option v-for="el of locators" :value="el">{{el.name}}</option>
+    <option v-for="(el) of locators" :value="el">{{el.name}}</option>
   </select>
   <form @submit.prevent="go"
     h10 flex min-w300px w="33%">
@@ -41,6 +45,7 @@ watchEffect(()=>{
       ref="ipt"
       ::="q"
       :placeholder="locator.rawurl"
+      @keydown.tab.prevent="lctrIdx++"
       px4 bg-hex-8883 flex-1
       rounded-l-4
       outline="none active:none">
