@@ -13,7 +13,8 @@ const locators = $ref([
     rawurl:'duckduckgo.com/?q=%s'
   }
 ])
-let lctrIdx = $ref(0)
+const lctrKey = 'current-locator';
+let lctrIdx = $(useStorage(lctrKey,0))
 let locator = $computed({
   get:()=>locators[lctrIdx % locators.length],
   set:v=>lctrIdx=locators.indexOf(v)
@@ -32,6 +33,8 @@ watchEffect(()=>{
   if(q.trim()[0]!=='>') return
   console.log('命令模式')
 })
+
+
 </script>
 
 <template>
