@@ -41,6 +41,7 @@ export default defineConfig({
       dts: true,
       dirs: [
         "./src/composables",
+        "./src/data",
       ],
       vueTemplate: true,
     }),
