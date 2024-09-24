@@ -1,5 +1,2 @@
-export const isWallpaper = ref(true);
+export const isWallpaper = useStorage("use-wallpaper", false);
 export const toggleWallpaper = useToggle(isWallpaper);
-watchEffect(() => {
-  console.log(isWallpaper.value);
-});
