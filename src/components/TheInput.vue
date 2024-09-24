@@ -10,7 +10,7 @@ let locator = $computed({
 
 let title = $(useTitle())
 watchEffect(()=>{
-  title= locator.name
+  title = locator.name
 })
 
 let q = $ref('')
