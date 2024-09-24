@@ -49,10 +49,11 @@ const doTab = () =>{
         :placeholder="locator.rawurl"
         @keydown.tab.prevent="doTab"
         holder="op-50 black dark:op-50 dark:white"
+        backdrop-blur-sm
         px4 bg-hex-8883 flex-1
         rounded-l-2
         outline="none active:none">
-      <button px4 rounded-r-2 shadow="inner hex-8883 active:hex-8881" outline-none transition>Search</button>
+      <button backdrop-blur-sm px4 rounded-r-2 shadow="inner hex-8883 active:hex-8881" outline-none transition>Search</button>
     </form>
   </div>
 </template>
