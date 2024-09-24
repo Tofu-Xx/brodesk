@@ -7,18 +7,24 @@ let locator = $computed({
   get:()=>locators[lctrIdx % locators.length],
   set:v=>lctrIdx=locators.indexOf(v)
 })
+
+let title = $(useTitle())
+watchEffect(()=>{
+  title= locator.name
+})
+
 let q = $ref('')
 const iptRef = $(useTemplateRef('ipt'))
 onMounted(() => {
   iptRef?.focus()
 })
-const {ctrl_k} = useMagicKeys()
-watch(ctrl_k,(v)=>{
-  if(v){
-    console.log()
-    iptRef?.focus()
-  }
-})
+// const {ctrl_k} = useMagicKeys()
+// watch(ctrl_k,(v)=>{
+//   if(v){
+//     v.preventDefault()
+//     iptRef?.focus()
+//   }
+// })
 const go = () => {
   search(locator.rawurl,q)
   q = ''
