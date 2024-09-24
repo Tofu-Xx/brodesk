@@ -15,9 +15,12 @@ watchEffect(()=>{
 
 let q = $ref('')
 const iptRef = $(useTemplateRef('ipt'))
-onMounted(() => {
+onStartTyping(()=>{
   iptRef?.focus()
 })
+// onMounted(() => {
+//   iptRef?.focus()
+// })
 // const {ctrl_k} = useMagicKeys()
 // watch(ctrl_k,(v)=>{
 //   if(v){
@@ -25,6 +28,13 @@ onMounted(() => {
 //     iptRef?.focus()
 //   }
 // })
+
+// useEventListener(document,'keydown', function(event) {
+//   if (event.ctrlKey && event.key === 'k') {
+//     event.preventDefault();
+//     iptRef?.focus()
+//   }
+// });
 const go = () => {
   search(locator.rawurl,q)
   q = ''
@@ -40,12 +50,6 @@ const doTab = () =>{
   if(lctrIdx>=locators.length) lctrIdx=0
 }
 
-useEventListener(document,'keydown', function(event) {
-  if (event.ctrlKey && event.key === 'k') {
-    event.preventDefault();
-    iptRef?.focus()
-  }
-});
 </script>
 
 <template>
@@ -61,6 +65,7 @@ useEventListener(document,'keydown', function(event) {
         ::="q"
         :placeholder="locator.rawurl"
         @keydown.tab.prevent="doTab"
+        
         px4 bg-hex-8883 flex-1
         rounded-l-4
         outline="none active:none">
