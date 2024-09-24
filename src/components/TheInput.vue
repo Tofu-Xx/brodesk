@@ -65,7 +65,7 @@ const doTab = () =>{
         ::="q"
         :placeholder="locator.rawurl"
         @keydown.tab.prevent="doTab"
-        
+        holder="op-50 black dark:op-50 dark:white"
         px4 bg-hex-8883 flex-1
         rounded-l-4
         outline="none active:none">

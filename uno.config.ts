@@ -8,7 +8,9 @@ import {
 
 export default defineConfig({
   rules: [],
-  shortcuts: [],
+  shortcuts: [
+    [/^holder-(.*)$/, ([,c]) => `placeholder-${c}`],
+  ],
   presets: [
     presetUno(),
     presetAttributify(),
