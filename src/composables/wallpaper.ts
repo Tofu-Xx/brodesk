@@ -1,6 +1,6 @@
 export let wallpaperSrc = $(useStorage("wallpaper-base64", ""));
-export const isWallpaper = useStorage("use-wallpaper", false);
-export const toggleWallpaper = useToggle(isWallpaper);
+export const showWallpaper = useStorage("show-wallpaper", false);
+export const toggleWallpaper = useToggle(showWallpaper);
 export const readyNext = async (msg: string) => {
   console.log('ready next img... awaiting...')
   const { data } = await useFetch("https://picsum.photos/3840/2160").blob();
