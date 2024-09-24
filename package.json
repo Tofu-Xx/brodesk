@@ -1,5 +1,6 @@
 {
   "type": "module",
+  "version": "0.0.1",
   "private": true,
   "packageManager": "pnpm@9.11.0",
   "scripts": {
@@ -8,7 +9,7 @@
     "preview": "vite preview",
     "typecheck": "vue-tsc --noEmit",
     "up": "taze latest -I",
-    "release": "bumpp"
+    "release": "bumpp --all"
   },
   "dependencies": {
     "@vueuse/core": "^11.1.0",
