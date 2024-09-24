@@ -6,7 +6,7 @@
   "scripts": {
     "build": "vite build",
     "dev": "vite --port 3333 --open",
-    "preview": "vite preview",
+    "preview": "vite preview --open",
     "typecheck": "vue-tsc --noEmit",
     "up": "taze latest -I",
     "release": "bumpp --all"
