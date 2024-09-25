@@ -1,5 +1,5 @@
 <template>
   <TheWallpaper />
   <TheInput :locators />
-  <TheFooter />
+  <TheNav />
 </template>

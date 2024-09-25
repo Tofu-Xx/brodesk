@@ -32,11 +32,11 @@ export const locators: Locator[] = [
     rawurl: "wikipedia.org/wiki/Special:Search?search=%s",
   },
   {
-    name:'tb',
-    rawurl:'s.taobao.com/search?q=%s'
+    name: "tb",
+    rawurl: "s.taobao.com/search?q=%s",
   },
   {
-    name:'iqi',
-    rawurl:'iqiyi.com/search/%s'
-  }
+    name: "iqi",
+    rawurl: "iqiyi.com/search/%s",
+  },
 ];

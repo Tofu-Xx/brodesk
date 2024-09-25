@@ -22,9 +22,9 @@ const go = () => {
   q = ''
 }
 
+let cmdMode = $computed(()=>q.trim().startsWith(">"))
 watchEffect(()=>{
-  if(q.trim()[0]!=='>') return
-  console.log('命令模式')
+  console.log(`cmdMode:${cmdMode? 'on' : 'off'}`)
 })
 
 const doTab = () =>{
@@ -35,8 +35,8 @@ const doTab = () =>{
 </script>
 
 <template>
-  <div pos-absolute top-25 w-full flex="~ justify-center gap2">
-    <select ::="lctrIdx" min-w12 text-center bg-hex-8883 rounded-2 outline-none appearance-none>
+  <div absolute top-25 w-full flex="~ justify-center gap2">
+    <select ::="lctrIdx" min-w12 text-center bg-hex-8883 rounded-2 outline-none appearance-none cursor-pointer>
       <option v-for="(el,i) of locators" :value="i" text-black>{{el.name}}</option>
     </select>
     <form @submit.prevent="go"
