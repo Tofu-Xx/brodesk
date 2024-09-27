@@ -1,61 +1,67 @@
 <script setup lang="ts">
-import { get, set } from "@vueuse/core";
-import { Locator } from "~/data/locators";
+import { get, set } from '@vueuse/core'
+import type { Locator } from '~/data/locators'
 
-export const locators:Locator[] = []
-const lctrKey = 'current-locator';
-let lctrIdx = useStorage(lctrKey,0)
-let locator = computed(()=>locators[get(lctrIdx)])
+export const locators: Locator[] = []
+const lctrKey = 'current-locator'
+const lctrIdx = useStorage(lctrKey, 0)
+const locator = computed(() => locators[get(lctrIdx)])
 // set:v=>lctrIdx=locators.indexOf(v)
 
-let title = useTitle()
-watchEffect(()=>{
+const title = useTitle()
+watchEffect(() => {
   set(title, get(locator).name)
 })
 
-let q = ref('')
+const q = ref('')
 const iptRef = useTemplateRef('ipt')
-onStartTyping(()=>{
+onStartTyping(() => {
   get(iptRef)?.focus()
 })
 
-const go = () => {
-  search(get(locator).rawurl,get(q))
-  set(q,'')
+function go() {
+  search(get(locator).rawurl, get(q))
+  set(q, '')
 }
 
-let cmdMode = computed(()=>get(q).trim().startsWith(">"))
-watchEffect(()=>{
-  console.log(`cmdMode:${cmdMode? 'on' : 'off'}`)
+const cmdMode = computed(() => get(q).trim().startsWith('>'))
+watchEffect(() => {
+  console.log(`cmdMode: ${cmdMode.value ? 'on' : 'off'}`)
 })
 
-const doTab = () =>{
-  set(lctrIdx,get(lctrIdx)+1)
-  if(get(lctrIdx)>=locators.length) set(lctrIdx,0)
+function doTab() {
+  set(lctrIdx, get(lctrIdx) + 1)
+  if (get(lctrIdx) >= locators.length)
+    set(lctrIdx, 0)
 }
-
 </script>
 
 <template>
   <div absolute top-25 w-full flex="~ justify-center gap2">
-    <select ::="lctrIdx" min-w12 text-center bg-hex-8883 rounded-2 outline-none appearance-none cursor-pointer>
-      <option v-for="(el,i) of locators" :value="i" text-black>{{el.name}}</option>
+    <select ::="lctrIdx" min-w12 cursor-pointer appearance-none rounded-2 bg-hex-8883 text-center outline-none>
+      <option v-for="(el, i) of locators" :key="i" :value="i" text-black>
+        {{ el.name }}
+      </option>
     </select>
-    <form @submit.prevent="go"
-      h10 flex min-w300px w="33%">
+    <form
+      h10
+      min-w300px flex w="33%" @submit.prevent="go"
+    >
       <input
-        type="text"
         ref="ipt"
+        type="text"
         tabindex="1"
         ::="q"
         :placeholder="locator.rawurl"
-        @keydown.tab.prevent="doTab"
         holder="op-50 black dark:op-50 dark:white"
-        backdrop-blur-sm
-        px4 bg-hex-8883 flex-1
-        rounded-l-2
-        outline="none active:none">
-      <button backdrop-blur-sm px4 rounded-r-2 shadow="inner hex-8883 active:hex-8881" outline-none transition>Search</button>
+        flex-1
+
+        rounded-l-2 bg-hex-8883 px4 backdrop-blur-sm outline="none active:none"
+        @keydown.tab.prevent="doTab"
+      >
+      <button shadow="inner hex-8883 active:hex-8881" rounded-r-2 px4 outline-none backdrop-blur-sm transition>
+        Search
+      </button>
     </form>
   </div>
 </template>
