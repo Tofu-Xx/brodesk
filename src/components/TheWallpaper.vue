@@ -1,5 +1,8 @@
 <script setup lang="ts">
-const src = unref(wallpaperSrc)||"https://picsum.photos/3840/2160"
+let src = unref(wallpaperSrc) 
+if(src) wallpaperSrc.value = null 
+else src = 'https://picsum.photos/3840/2160'
+console.log(src)
 readyNext('ok')
 </script>
 <template>
