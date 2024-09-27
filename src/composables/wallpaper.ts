@@ -1,14 +1,20 @@
 import { get, set } from "@vueuse/core";
 
-export const wallpaperSrc = useStorage("wallpaper-base64", "");
+export const base64Wallpapers = useStorage<string[]>(
+  "base64-wallpapers",
+  [],
+);
 export const showWallpaper = useStorage("show-wallpaper", false);
 export const toggleWallpaper = useToggle(showWallpaper);
-export const readyNext = async (msg: string) => {
-  console.log("ready next img... awaiting...");
+export const readyNext = async () => {
   const { data } = await useFetch("https://picsum.photos/3840/2160").blob();
   const { base64 } = useBase64(data as any);
   whenever(base64, () => {
-    set(wallpaperSrc, get(base64));
-    console.log(msg);
+    get(base64Wallpapers).unshift(get(base64));
   });
 };
+watch(() => get(base64Wallpapers).length, async () => {
+  if (get(base64Wallpapers).length < 3) {
+    await readyNext();
+  }
+}, { immediate: true });

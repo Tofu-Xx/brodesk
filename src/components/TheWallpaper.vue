@@ -1,8 +1,6 @@
 <script setup lang="ts">
-import { set } from "@vueuse/core";
-const src = unref(wallpaperSrc) ||  'https://picsum.photos/3840/2160'
-set(wallpaperSrc,'')
-readyNext('ok')
+import { get} from "@vueuse/core";
+const src = get(base64Wallpapers).pop() ||  'https://picsum.photos/3840/2160'
 </script>
 <template>
   <img v-show="showWallpaper" :src absolute size-screen object-cover>
