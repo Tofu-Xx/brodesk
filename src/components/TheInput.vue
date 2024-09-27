@@ -6,7 +6,6 @@ export const locators: Locator[] = []
 const lctrKey = 'current-locator'
 const lctrIdx = useStorage(lctrKey, 0)
 const locator = computed(() => locators[get(lctrIdx)])
-// set:v=>lctrIdx=locators.indexOf(v)
 
 const title = useTitle()
 watchEffect(() => {
