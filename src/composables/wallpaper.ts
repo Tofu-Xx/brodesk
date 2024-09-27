@@ -10,7 +10,7 @@ export const readyNext = async () => {
   const { data } = await useFetch("https://picsum.photos/3840/2160").blob();
   const { base64 } = useBase64(data as any);
   whenever(base64, () => {
-    get(base64Wallpapers).unshift(get(base64));
+    get(base64Wallpapers).push(get(base64));
   });
 };
 watch(() => get(base64Wallpapers).length, async () => {
