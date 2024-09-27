@@ -12,6 +12,7 @@ declare global {
   const base: typeof import('./src/composables/wallpaper')['base']
   const base6: typeof import('./src/composables/wallpaper')['base6']
   const base64: typeof import('./src/composables/wallpaper')['base64']
+  const base64Wallpapers: typeof import('./src/composables/wallpaper')['base64Wallpapers']
   const computed: typeof import('vue')['computed']
   const computedAsync: typeof import('@vueuse/core')['computedAsync']
   const computedEager: typeof import('@vueuse/core')['computedEager']
