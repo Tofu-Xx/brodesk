@@ -1,35 +1,37 @@
 <script setup lang="ts">
+import { get, set } from "@vueuse/core";
 import { Locator } from "~/data/locators";
+
 export const locators:Locator[] = []
 const lctrKey = 'current-locator';
-let lctrIdx = $(useStorage(lctrKey,0))
-let locator = $computed(()=>locators[lctrIdx])
+let lctrIdx = useStorage(lctrKey,0)
+let locator = computed(()=>locators[get(lctrIdx)])
 // set:v=>lctrIdx=locators.indexOf(v)
 
-let title = $(useTitle())
+let title = useTitle()
 watchEffect(()=>{
-  title = locator.name
+  set(title, get(locator).name)
 })
 
-let q = $ref('')
-const iptRef = $(useTemplateRef('ipt'))
+let q = ref('')
+const iptRef = useTemplateRef('ipt')
 onStartTyping(()=>{
-  iptRef?.focus()
+  get(iptRef)?.focus()
 })
 
 const go = () => {
-  search(locator.rawurl,q)
-  q = ''
+  search(get(locator).rawurl,get(q))
+  set(q,'')
 }
 
-let cmdMode = $computed(()=>q.trim().startsWith(">"))
+let cmdMode = computed(()=>get(q).trim().startsWith(">"))
 watchEffect(()=>{
   console.log(`cmdMode:${cmdMode? 'on' : 'off'}`)
 })
 
 const doTab = () =>{
-  lctrIdx++
-  if(lctrIdx>=locators.length) lctrIdx=0
+  set(lctrIdx,get(lctrIdx)+1)
+  if(get(lctrIdx)>=locators.length) set(lctrIdx,0)
 }
 
 </script>

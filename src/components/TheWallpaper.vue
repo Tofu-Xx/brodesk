@@ -1,7 +1,8 @@
 <script setup lang="ts">
-let src = unref(wallpaperSrc) 
-if(src) wallpaperSrc.value = null 
-else src = 'https://picsum.photos/3840/2160'
+import { set } from "@vueuse/core";
+
+let src = unref(wallpaperSrc) ||  'https://picsum.photos/3840/2160'
+set(wallpaperSrc,'')
 console.log(src)
 readyNext('ok')
 </script>
