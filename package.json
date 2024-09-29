@@ -8,7 +8,7 @@
     "dev": "vite --port 3333 --open",
     "preview": "vite preview --open",
     "typecheck": "vue-tsc --noEmit",
-    "up": "taze latest -I",
+    "up": "taze major -I",
     "release": "bumpp --all",
     "lint": "eslint .",
     "lint:fix": "eslint . --fix"
