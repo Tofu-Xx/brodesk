@@ -11,25 +11,17 @@ import VueDevTools from 'vite-plugin-vue-devtools'
 export default defineConfig({
   resolve: {
     alias: {
-      // "~/": `${path.resolve(__dirname, "src")}/`,
       '~': fileURLToPath(new URL('./src', import.meta.url)),
     },
   },
   plugins: [
     VueMacros({
-      defineProps: false,
-      defineModels: false,
       shortVmodel: {
         prefix: '::',
       },
       exportProps: true,
       plugins: {
-        vue: Vue({
-          script: {
-            propsDestructure: true,
-            defineModel: true,
-          },
-        }),
+        vue: Vue(),
       },
     }),
 
@@ -38,6 +30,12 @@ export default defineConfig({
       imports: [
         'vue',
         '@vueuse/core',
+        {
+          '@vueuse/core': [
+            'get',
+            'set',
+          ],
+        },
       ],
       dts: true,
       dirs: [
@@ -45,6 +43,7 @@ export default defineConfig({
         './src/data',
       ],
       vueTemplate: true,
+
     }),
 
     // https://github.com/antfu/vite-plugin-components
