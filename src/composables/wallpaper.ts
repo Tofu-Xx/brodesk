@@ -1,11 +1,4 @@
-import { get } from '@vueuse/core'
-
-export const base64Wallpapers = useStorage<string[]>(
-  'base64-wallpapers',
-  [],
-)
-export const showWallpaper = useStorage('show-wallpaper', false)
-export const toggleWallpaper = useToggle(showWallpaper)
+export const base64Wallpapers = useStorage<string[]>('base64-wallpapers', [])
 export async function readyNext() {
   const { data } = await useFetch('https://picsum.photos/3840/2160').blob()
   const { base64 } = useBase64(data as any)
@@ -18,3 +11,9 @@ watch(() => get(base64Wallpapers).length, async () => {
     await readyNext()
   }
 }, { immediate: true })
+/*  */
+export const showWallpaper = useStorage('show-wallpaper', false)
+export const toggleShowWallpaper = useToggle(showWallpaper)
+/*  */
+export const pinWallpaper = useStorage('pin-wallpaper', false)
+export const togglePinWallpaper = useToggle(pinWallpaper)
