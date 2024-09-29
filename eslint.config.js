@@ -10,5 +10,6 @@ export default antfu({
     'no-console': 'off',
     'vue/no-export-in-script-setup': 'off',
     'vue/no-unused-refs': 'off',
+    'antfu/curly': 'off',
   },
 })

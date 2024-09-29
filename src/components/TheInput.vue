@@ -1,4 +1,6 @@
 <script setup lang="ts">
+import type { Locator } from '~/data/locators'
+
 export const locators: Locator[] = []
 const lctrKey = 'current-locator'
 const lctrIdx = useStorage(lctrKey, 0)

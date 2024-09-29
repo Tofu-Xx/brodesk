@@ -1,5 +1,7 @@
 export const imgUrl = 'https://picsum.photos/3840/2160'
 /*  */
+export const currentWallpaper = useStorage('current-wallpaper', '')
+/*  */
 export const showWallpaper = useStorage('show-wallpaper', false)
 export const toggleShowWallpaper = useToggle(showWallpaper)
 /*  */
@@ -15,8 +17,11 @@ export async function readyNext() {
     get(base64Wallpapers).push(get(base64))
   })
 }
+
 watch(() => get(base64Wallpapers).length, async () => {
   if (get(base64Wallpapers).length < 3) {
+    console.log('ready next')
     await readyNext()
+    console.log('ready next done')
   }
 }, { immediate: true })

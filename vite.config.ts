@@ -9,6 +9,15 @@ import Inspect from 'vite-plugin-inspect'
 import VueDevTools from 'vite-plugin-vue-devtools'
 
 export default defineConfig({
+  server: {
+    proxy: {
+      '/picsum': {
+        target: 'https://picsum.photos',
+        changeOrigin: true,
+        rewrite: path => path.replace(/^\/picsum/, ''),
+      },
+    },
+  },
   resolve: {
     alias: {
       '~': fileURLToPath(new URL('./src', import.meta.url)),
