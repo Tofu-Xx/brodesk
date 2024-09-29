@@ -10,6 +10,7 @@ watch(pinWallpaper_, () => {
     <a href="https://github.com/Tofu-Xx/deskdown" target="_blank" i-carbon:logo-github />
     <button i-carbon:sun dark:i-carbon:moon @click="toggleDark()" />
     <button :class="showWallpaper_ ? 'i-carbon-image' : 'i-carbon-no-image'" @click="toggleShowWallpaper()" />
-    <button v-if="base64" :class="pinWallpaper_ ? 'i-mdi-pin' : 'i-mdi-pin-off'" @click="togglePinWallpaper()" />
+    <button v-if="base64" :class="pinWallpaper_ ? 'i-mdi-pin' : 'i-mdi-pin-outline'" @click="togglePinWallpaper()" />
+    <button :class="onlyWallpaper_ ? 'i-carbon-view' : 'i-carbon-view-off'" @click="toggleOnlyWallpaper()" />
   </nav>
 </template>

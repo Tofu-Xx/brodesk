@@ -5,6 +5,9 @@ export const currentWallpaper_ = useStorage('current-wallpaper', '')
 export const showWallpaper_ = useStorage('show-wallpaper', false)
 export const toggleShowWallpaper = useToggle(showWallpaper_)
 /*  */
+export const onlyWallpaper_ = useStorage('only-wallpaper', false)
+export const toggleOnlyWallpaper = useToggle(onlyWallpaper_)
+/*  */
 export const pinWallpaper_ = useStorage('pin-wallpaper', false)
 export const togglePinWallpaper = useToggle(pinWallpaper_)
 

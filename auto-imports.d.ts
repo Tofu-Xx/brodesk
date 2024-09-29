@@ -82,6 +82,7 @@ declare global {
   const onUnmounted: typeof import('vue')['onUnmounted']
   const onUpdated: typeof import('vue')['onUpdated']
   const onWatcherCleanup: typeof import('vue')['onWatcherCleanup']
+  const onlyWallpaper_: typeof import('./src/composables/wallpaper')['onlyWallpaper_']
   const pausableWatch: typeof import('@vueuse/core')['pausableWatch']
   const pinWallpaper: typeof import('./src/composables/wallpaper')['pinWallpaper']
   const pinWallpaperStorage: typeof import('./src/composables/wallpaper')['pinWallpaperStorage']
@@ -130,6 +131,7 @@ declare global {
   const toValue: typeof import('vue')['toValue']
   const tog: typeof import('./src/composables/wallpaper')['tog']
   const toggleDark: typeof import('./src/composables/dark')['toggleDark']
+  const toggleOnlyWallpaper: typeof import('./src/composables/wallpaper')['toggleOnlyWallpaper']
   const togglePinWallpaper: typeof import('./src/composables/wallpaper')['togglePinWallpaper']
   const toggleShowWallpaper: typeof import('./src/composables/wallpaper')['toggleShowWallpaper']
   const toggleWallpaper: typeof import('./src/composables/wallpaper')['toggleWallpaper']
@@ -401,6 +403,7 @@ declare module 'vue' {
     readonly onUnmounted: UnwrapRef<typeof import('vue')['onUnmounted']>
     readonly onUpdated: UnwrapRef<typeof import('vue')['onUpdated']>
     readonly onWatcherCleanup: UnwrapRef<typeof import('vue')['onWatcherCleanup']>
+    readonly onlyWallpaper_: UnwrapRef<typeof import('./src/composables/wallpaper')['onlyWallpaper_']>
     readonly pausableWatch: UnwrapRef<typeof import('@vueuse/core')['pausableWatch']>
     readonly pinWallpaper_: UnwrapRef<typeof import('./src/composables/wallpaper')['pinWallpaper_']>
     readonly provide: UnwrapRef<typeof import('vue')['provide']>
@@ -439,6 +442,7 @@ declare module 'vue' {
     readonly toRefs: UnwrapRef<typeof import('vue')['toRefs']>
     readonly toValue: UnwrapRef<typeof import('vue')['toValue']>
     readonly toggleDark: UnwrapRef<typeof import('./src/composables/dark')['toggleDark']>
+    readonly toggleOnlyWallpaper: UnwrapRef<typeof import('./src/composables/wallpaper')['toggleOnlyWallpaper']>
     readonly togglePinWallpaper: UnwrapRef<typeof import('./src/composables/wallpaper')['togglePinWallpaper']>
     readonly toggleShowWallpaper: UnwrapRef<typeof import('./src/composables/wallpaper')['toggleShowWallpaper']>
     readonly triggerRef: UnwrapRef<typeof import('vue')['triggerRef']>
