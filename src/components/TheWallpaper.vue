@@ -1,7 +1,14 @@
 <script setup lang="ts">
-const src = get(base64Wallpapers).pop() || 'https://picsum.photos/3840/2160'
+const hasCache = ref(true)
+const src = get(base64Wallpapers).pop()
+set(hasCache, Boolean(src))
+if (!get(hasCache)) {
+  set(src, imgUrl)
+}
+// const imgRef = useTemplateRef('')
 </script>
 
 <template>
-  <img v-show="showWallpaper" :src absolute size-screen object-cover>
+  <img v-show="showWallpaper" ref :src absolute size-screen object-cover>
+  <slot />
 </template>

@@ -1,5 +1,6 @@
 <template>
-  <TheWallpaper />
-  <TheInput :locators />
-  <TheNav />
+  <TheWallpaper>
+    <TheInput :locators />
+    <TheNav />
+  </TheWallpaper>
 </template>
