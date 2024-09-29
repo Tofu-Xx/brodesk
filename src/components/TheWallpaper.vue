@@ -1,5 +1,5 @@
 <script setup lang="ts">
-const src = ref<string | undefined>(get(currentWallpaper) || get(base64Wallpapers).pop())
+const src = ref<string | undefined>(get(currentWallpaper_) || get(base64Wallpapers_).pop())
 if (!get(src)) {
   set(src, imgUrl)
   // const imgRef = useTemplateRef('img')
@@ -12,12 +12,12 @@ if (!get(src)) {
   //   // })
   //   console.dir(imgRef)
   // })
-  provide('currentWallpaper', void 0)
+  provide('base64', void 0)
 }
-else provide('currentWallpaper', src)
+else provide('base64', src)
 </script>
 
 <template>
-  <img v-show="showWallpaper" ref="img" :src absolute size-screen object-cover>
+  <img v-show="showWallpaper_" ref="img" :src absolute size-screen object-cover>
   <slot />
 </template>
