@@ -11,6 +11,6 @@ watch(pinWallpaper_, () => {
     <button i-carbon:sun dark:i-carbon:moon @click="toggleDark()" />
     <button :class="showWallpaper_ ? 'i-carbon-image' : 'i-carbon-no-image'" @click="toggleShowWallpaper()" />
     <button v-if="base64" :class="pinWallpaper_ ? 'i-mdi-pin' : 'i-mdi-pin-outline'" @click="togglePinWallpaper()" />
-    <button :class="onlyWallpaper_ ? 'i-carbon-view' : 'i-carbon-view-off'" @click="toggleOnlyWallpaper()" />
+    <button :class="onlyWallpaper_ ? 'i-carbon-view-off' : 'i-carbon-view'" @click="toggleOnlyWallpaper()" />
   </nav>
 </template>

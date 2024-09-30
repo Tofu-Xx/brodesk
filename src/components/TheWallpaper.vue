@@ -19,13 +19,13 @@ else provide('base64', src)
 
 <template>
   <img v-show="showWallpaper_" ref="img" :src absolute size-screen object-cover>
-  <div :class="{ content: !onlyWallpaper_ }" relative size-screen>
+  <div :class="{ onlyWallpaper_ }" relative size-screen>
     <slot />
   </div>
 </template>
 
 <style scoped>
-.content::v-deep {
+.onlyWallpaper_::v-deep {
   & *:not(form) {
     opacity: 0;
     transition: all 0.3s ease-in-out;
