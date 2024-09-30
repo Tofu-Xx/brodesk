@@ -35,7 +35,7 @@ function doTab() {
 </script>
 
 <template>
-  <div absolute top-25 w-full flex="~ justify-center gap2">
+  <div id="the" absolute top-25 w-full flex="~ justify-center gap2">
     <select ::="lctrIdx" min-w12 cursor-pointer appearance-none rounded-2 bg-hex-8883 text-center outline-none>
       <option v-for="(el, i) of locators" :key="i" :value="i" text-black>
         {{ el.name }}

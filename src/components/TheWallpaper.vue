@@ -19,5 +19,25 @@ else provide('base64', src)
 
 <template>
   <img v-show="showWallpaper_" ref="img" :src absolute size-screen object-cover>
-  <slot />
+  <div :class="{ content: !onlyWallpaper_ }">
+    <slot />
+  </div>
 </template>
+
+<style scoped>
+.content::v-deep {
+  & * {
+    opacity: 0;
+    transition: all 0.3s ease-in-out;
+    &:hover {
+      opacity: 1;
+    }
+  }
+  & #the {
+    opacity: 1;
+    & *:focus-within {
+      opacity: 1;
+    }
+  }
+}
+</style>
