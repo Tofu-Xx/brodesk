@@ -19,7 +19,7 @@ else provide('base64', src)
 
 <template>
   <img v-show="showWallpaper_" ref="img" :src absolute size-screen object-cover>
-  <div :class="{ content: !onlyWallpaper_ }">
+  <div :class="{ content: !onlyWallpaper_ }" relative size-screen>
     <slot />
   </div>
 </template>
@@ -33,7 +33,7 @@ else provide('base64', src)
       opacity: 1;
     }
   }
-  & #the {
+  & form {
     opacity: 1;
     & *:focus-within {
       opacity: 1;

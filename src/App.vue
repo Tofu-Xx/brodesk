@@ -1,6 +1,6 @@
 <template>
   <TheWallpaper>
-    <TheInput :locators />
     <TheNav />
+    <TheInput :locators />
   </TheWallpaper>
 </template>
