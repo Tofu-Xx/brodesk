@@ -26,7 +26,7 @@ else provide('base64', src)
 
 <style scoped>
 .content::v-deep {
-  & * {
+  & *:not(form) {
     opacity: 0;
     transition: all 0.3s ease-in-out;
     &:hover {
@@ -34,7 +34,7 @@ else provide('base64', src)
     }
   }
   & form {
-    opacity: 1;
+    &:has(input:focus-within) *,
     & *:focus-within {
       opacity: 1;
     }

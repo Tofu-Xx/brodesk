@@ -11,5 +11,6 @@ export default antfu({
     'vue/no-export-in-script-setup': 'off',
     'vue/no-unused-refs': 'off',
     'antfu/curly': 'off',
+    'vue/html-closing-bracket-newline': 'off',
   },
 })

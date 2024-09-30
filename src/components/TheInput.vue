@@ -35,25 +35,22 @@ function doTab() {
 </script>
 
 <template>
-  <form m="a t25" h10 min-w300px w50vw flex gap2 @submit.prevent="go">
-    <select ::="lctrIdx" min-w12 cursor-pointer appearance-none rounded-2 bg-hex-8883 text-center outline-none>
+  <form m="a t25" h10 min-w300px w45vw flex gap2 @submit.prevent="go">
+    <select
+      ::="lctrIdx" min-w12 cursor-pointer appearance-none
+      rounded-2 bg-hex-8883 text-center outline-none>
       <option v-for="(el, i) of locators" :key="i" :value="i" text-black>
         {{ el.name }}
       </option>
     </select>
     <input
-      ref="ipt"
-      type="text"
-
-      ::="q"
-      :placeholder="locator.rawurl"
+      ref="ipt" type="text" ::="q" :placeholder="locator.rawurl"
       holder="op-50 black dark:op-50 dark:white"
-      flex-1
-
-      rounded-2 bg-hex-8883 px4 backdrop-blur-sm outline="none active:none"
-      @keydown.tab.prevent="doTab"
-    >
-    <button shadow="inner hex-8883 active:hex-8881" rounded-2 px4 outline-none backdrop-blur-sm transition>
+      flex-1 rounded-2 bg-hex-8883 px4 outline-none backdrop-blur-sm
+      @keydown.tab.prevent="doTab">
+    <button
+      rounded-2 px4 shadow="inner hex-8883 active:hex-8881"
+      outline-none backdrop-blur-sm transition active:scale-110>
       Search
     </button>
   </form>
