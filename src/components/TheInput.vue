@@ -49,8 +49,8 @@ function doTab() {
     </select>
     <input
       ref="ipt" type="text" ::="q" :placeholder="locator.rawurl"
-      holder="op-50 black dark:op-50 dark:white"
-      flex-1 rounded-2 bg-hex-8883 px4 outline-none backdrop-blur-sm
+      holder="op-50 black dark:op-50 dark:white transition" flex-1 rounded-2
+      bg-hex-8883 px4 outline-none backdrop-blur-sm
       @keydown.tab.prevent="doTab">
     <button
       rounded-2 px4 shadow="inner hex-8883 active:hex-8881"
@@ -59,3 +59,17 @@ function doTab() {
     </button>
   </form>
 </template>
+
+<style scoped>
+input::placeholder {
+  opacity: 0;
+}
+
+input:focus::placeholder {
+  opacity: 0;
+}
+
+input:not(:focus):placeholder-shown::placeholder {
+  opacity: 1;
+}
+</style>
