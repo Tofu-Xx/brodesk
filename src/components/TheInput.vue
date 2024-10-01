@@ -54,7 +54,7 @@ function doTab() {
       @keydown.tab.prevent="doTab">
     <button
       rounded-2 px4 shadow="inner hex-8883 active:hex-8881"
-      outline-none backdrop-blur-sm transition active:scale-110>
+      outline-none backdrop-blur-sm active:scale-110>
       Search
     </button>
   </form>
@@ -63,7 +63,7 @@ function doTab() {
 <style scoped>
 input::placeholder {
   opacity: 0;
-  transition: opacity 5s;
+  transition: opacity 0.3s ease-in-out;
 }
 
 input:focus::placeholder {
