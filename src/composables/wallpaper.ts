@@ -2,7 +2,7 @@ export const imgUrl = 'https://picsum.photos/3840/2160'
 /*  */
 export const currentWallpaper_ = useStorage('current-wallpaper', '')
 /*  */
-export const showWallpaper_ = useStorage('show-wallpaper', false)
+export const showWallpaper_ = useStorage('show-wallpaper', true)
 export const toggleShowWallpaper = useToggle(showWallpaper_)
 /*  */
 export const onlyWallpaper_ = useStorage('only-wallpaper', false)
