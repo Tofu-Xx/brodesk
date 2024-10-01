@@ -16,6 +16,10 @@ const iptRef = useTemplateRef('ipt')
 onStartTyping(() => {
   get(iptRef)?.focus()
 })
+watchEffect(() => {
+  if (get(q) === '')
+    get(iptRef)?.blur()
+})
 
 function go() {
   search(get(locator).rawurl, get(q))
