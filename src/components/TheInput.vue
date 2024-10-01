@@ -36,6 +36,24 @@ function doTab() {
   if (get(lctrIdx) >= locators.length)
     set(lctrIdx, 0)
 }
+
+// const { tab } = useMagicKeys({
+//   passive: false,
+//   onEventFired(e) {
+//     if (e.key === 'Tab')
+//       e.preventDefault()
+//   },
+// })
+// whenever(tab, () => {
+//   get(iptRef)?.focus()
+// })
+
+useEventListener('keydown', (e) => {
+  if (e.key === 'Tab') {
+    e.preventDefault()
+    get(iptRef)?.focus()
+  }
+})
 </script>
 
 <template>
