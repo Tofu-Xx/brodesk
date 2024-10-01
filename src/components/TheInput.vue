@@ -49,7 +49,7 @@ function doTab() {
     </select>
     <input
       ref="ipt" type="text" ::="q" :placeholder="locator.rawurl"
-      holder="op-50 black dark:op-50 dark:white transition" flex-1 rounded-2
+      holder="op-50 black dark:op-50 dark:white" flex-1 rounded-2
       bg-hex-8883 px4 outline-none backdrop-blur-sm
       @keydown.tab.prevent="doTab">
     <button
@@ -63,6 +63,7 @@ function doTab() {
 <style scoped>
 input::placeholder {
   opacity: 0;
+  transition: opacity 5s;
 }
 
 input:focus::placeholder {
