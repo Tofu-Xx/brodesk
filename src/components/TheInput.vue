@@ -35,7 +35,7 @@ function doTab() {
 </script>
 
 <template>
-  <form m="a t25" h10 min-w300px w45vw flex gap2 @submit.prevent="go">
+  <form ref="form" m="a t25" h10 min-w300px w45vw flex select-none gap2 @submit.prevent="go">
     <select
       ::="lctrIdx" min-w12 cursor-pointer appearance-none
       rounded-2 bg-hex-8883 text-center outline-none>
