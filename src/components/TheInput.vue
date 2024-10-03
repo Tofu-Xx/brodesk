@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import { UseMagicKeysReturn } from '@vueuse/core'
 import type { Locator } from '~/data/locators'
 
 export const locators: Locator[] = []
@@ -40,32 +41,18 @@ watchEffect(() => {
   console.log(`cmdMode: ${cmdMode.value ? 'on' : 'off'}`)
 })
 
-// const { tab } = useMagicKeys({
-//   passive: false,
-//   onEventFired(e) {
-//     if (e.key === 'Tab')
-//       e.preventDefault()
-//   },
-// })
-// whenever(tab, () => {
-//   get(iptRef)?.focus()
-// })
-
-useEventListener('keydown', (e) => {
-  if (e.key === 'Tab') {
-    e.preventDefault()
-    get(iptRef)?.focus()
-  }
-})
-useEventListener(iptRef, 'keydown', (e) => {
-  if (e.shiftKey && e.key === 'Tab') {
-    e.preventDefault()
+hotkey({
+  shift_tab() {
     set(lctrIdx, get(lctrIdx) - 1)
-  }
-  else if (e.key === 'Tab') {
-    e.preventDefault()
+  },
+  tab() {
     set(lctrIdx, get(lctrIdx) + 1)
-  }
+  },
+}, iptRef)
+hotkey({
+  tab() {
+    get(iptRef)?.focus()
+  },
 })
 </script>
 

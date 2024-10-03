@@ -49,6 +49,7 @@ declare global {
   const getCurrentInstance: typeof import('vue')['getCurrentInstance']
   const getCurrentScope: typeof import('vue')['getCurrentScope']
   const h: typeof import('vue')['h']
+  const hotkey: typeof import('./src/composables/hotkey')['hotkey']
   const ignorableWatch: typeof import('@vueuse/core')['ignorableWatch']
   const imgUrl: typeof import('./src/composables/wallpaper')['imgUrl']
   const inject: typeof import('vue')['inject']
@@ -371,6 +372,7 @@ declare module 'vue' {
     readonly getCurrentInstance: UnwrapRef<typeof import('vue')['getCurrentInstance']>
     readonly getCurrentScope: UnwrapRef<typeof import('vue')['getCurrentScope']>
     readonly h: UnwrapRef<typeof import('vue')['h']>
+    readonly hotkey: UnwrapRef<typeof import('./src/composables/hotkey')['hotkey']>
     readonly ignorableWatch: UnwrapRef<typeof import('@vueuse/core')['ignorableWatch']>
     readonly imgUrl: UnwrapRef<typeof import('./src/composables/wallpaper')['imgUrl']>
     readonly inject: UnwrapRef<typeof import('vue')['inject']>
