@@ -2,8 +2,17 @@
 import type { Locator } from '~/data/locators'
 
 export const locators: Locator[] = []
-const lctrKey = 'current-locator'
-const lctrIdx = useStorage(lctrKey, 0)
+const lctrIdx_ = useStorage('locator-index', 0)
+const lctrIdx = computed({
+  get: () => get(lctrIdx_),
+  set: (v) => {
+    if (v >= locators.length)
+      set(lctrIdx_, 0)
+    else if (v < 0)
+      set(lctrIdx_, locators.length - 1)
+    else set(lctrIdx_, get(v))
+  },
+})
 const locator = computed(() => locators[get(lctrIdx)])
 
 const title = useTitle()
@@ -31,12 +40,6 @@ watchEffect(() => {
   console.log(`cmdMode: ${cmdMode.value ? 'on' : 'off'}`)
 })
 
-function doTab() {
-  set(lctrIdx, get(lctrIdx) + 1)
-  if (get(lctrIdx) >= locators.length)
-    set(lctrIdx, 0)
-}
-
 // const { tab } = useMagicKeys({
 //   passive: false,
 //   onEventFired(e) {
@@ -54,6 +57,16 @@ useEventListener('keydown', (e) => {
     get(iptRef)?.focus()
   }
 })
+useEventListener(iptRef, 'keydown', (e) => {
+  if (e.shiftKey && e.key === 'Tab') {
+    e.preventDefault()
+    set(lctrIdx, get(lctrIdx) - 1)
+  }
+  else if (e.key === 'Tab') {
+    e.preventDefault()
+    set(lctrIdx, get(lctrIdx) + 1)
+  }
+})
 </script>
 
 <template>
@@ -68,8 +81,7 @@ useEventListener('keydown', (e) => {
     <input
       ref="ipt" type="text" ::="q" :placeholder="locator.rawurl"
       holder="op-50 black dark:op-50 dark:white" flex-1 rounded-2
-      bg-hex-8883 px4 outline-none backdrop-blur-sm
-      @keydown.tab.prevent="doTab">
+      bg-hex-8883 px4 outline-none backdrop-blur-sm>
     <button
       rounded-2 px4 shadow="inner hex-8883 active:hex-8881"
       outline-none backdrop-blur-sm active:scale-110>
