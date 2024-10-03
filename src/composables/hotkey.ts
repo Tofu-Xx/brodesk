@@ -8,9 +8,6 @@ export function hotkey(keys: any, el?: any) {
   })
   const activeElement = useActiveElement()
   watch(magic.current, () => {
-    // if (el && )
-    // return
-    console.log(activeElement)
     for (const key in keys) {
       if ((el ? get(activeElement) === get(el) : true) && get(magic[key])) {
         keys[key]()
