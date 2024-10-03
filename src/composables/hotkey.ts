@@ -7,16 +7,17 @@ export function hotkey(keys: any, el?: any) {
     },
   })
   const activeElement = useActiveElement()
-  watchEffect(() => {
-    if (el && get(activeElement) !== get(el))
-      return
+  watch(magic.current, () => {
+    // if (el && )
+    // return
+    console.log(activeElement)
     for (const key in keys) {
-      if (get(magic[key])) {
+      if ((el ? get(activeElement) === get(el) : true) && get(magic[key])) {
         keys[key]()
         break
       }
     }
-  })
+  }, { immediate: true })
 }
 
 // const { tab, shift_tab } = useMagicKeys({

@@ -1,24 +1,9 @@
 <script setup lang="ts">
-import { UseMagicKeysReturn } from '@vueuse/core'
 import type { Locator } from '~/data/locators'
 
 export const locators: Locator[] = []
 // const idx = ref(0)
 const lctrIdx = getIdx(locators)
-function getIdx(arr: any[]) {
-  const idx = ref(0)
-  return computed({
-    get: () => get(idx),
-    set: (v) => {
-      if (v >= arr.length)
-        set(idx, 0)
-      else if (v < 0)
-        set(idx, arr.length - 1)
-      else set(idx, get(v))
-    },
-  })
-}
-
 useStorage('locator-index', lctrIdx)
 const locator = computed(() => locators[get(lctrIdx)])
 
