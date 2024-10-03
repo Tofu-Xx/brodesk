@@ -48,6 +48,7 @@ declare global {
   const get: typeof import('@vueuse/core')['get']
   const getCurrentInstance: typeof import('vue')['getCurrentInstance']
   const getCurrentScope: typeof import('vue')['getCurrentScope']
+  const getIdx: typeof import('./src/composables/getIdx')['getIdx']
   const h: typeof import('vue')['h']
   const hotkey: typeof import('./src/composables/hotkey')['hotkey']
   const ignorableWatch: typeof import('@vueuse/core')['ignorableWatch']
@@ -371,6 +372,7 @@ declare module 'vue' {
     readonly get: UnwrapRef<typeof import('@vueuse/core')['get']>
     readonly getCurrentInstance: UnwrapRef<typeof import('vue')['getCurrentInstance']>
     readonly getCurrentScope: UnwrapRef<typeof import('vue')['getCurrentScope']>
+    readonly getIdx: UnwrapRef<typeof import('./src/composables/getIdx')['getIdx']>
     readonly h: UnwrapRef<typeof import('vue')['h']>
     readonly hotkey: UnwrapRef<typeof import('./src/composables/hotkey')['hotkey']>
     readonly ignorableWatch: UnwrapRef<typeof import('@vueuse/core')['ignorableWatch']>

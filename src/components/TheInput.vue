@@ -3,17 +3,23 @@ import { UseMagicKeysReturn } from '@vueuse/core'
 import type { Locator } from '~/data/locators'
 
 export const locators: Locator[] = []
-const lctrIdx_ = useStorage('locator-index', 0)
-const lctrIdx = computed({
-  get: () => get(lctrIdx_),
-  set: (v) => {
-    if (v >= locators.length)
-      set(lctrIdx_, 0)
-    else if (v < 0)
-      set(lctrIdx_, locators.length - 1)
-    else set(lctrIdx_, get(v))
-  },
-})
+// const idx = ref(0)
+const lctrIdx = getIdx(locators)
+function getIdx(arr: any[]) {
+  const idx = ref(0)
+  return computed({
+    get: () => get(idx),
+    set: (v) => {
+      if (v >= arr.length)
+        set(idx, 0)
+      else if (v < 0)
+        set(idx, arr.length - 1)
+      else set(idx, get(v))
+    },
+  })
+}
+
+useStorage('locator-index', lctrIdx)
 const locator = computed(() => locators[get(lctrIdx)])
 
 const title = useTitle()
