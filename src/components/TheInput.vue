@@ -17,8 +17,8 @@ const iptRef = useTemplateRef('ipt')
 onStartTyping(() => {
   get(iptRef)?.focus()
 })
-watchEffect(() => {
-  if (get(q) === '')
+watch(q, () => {
+  if (get(q) === '' && get(onlyWallpaper_))
     get(iptRef)?.blur()
 })
 
