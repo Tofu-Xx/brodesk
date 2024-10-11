@@ -1,7 +1,7 @@
 <script setup lang="ts">
-const src = ref<string | undefined>(get(currentWallpaper_) || get(base64Wallpapers_).pop())
+const src = ref<string | undefined>(currentWallpaper_.value || base64Wallpapers_.value.pop())
 provide('base64', unref(src))
-get(src) || set(src, imgUrl)
+src.value || (src.value = imgUrl)
 </script>
 
 <template>

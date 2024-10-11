@@ -4,44 +4,44 @@ import type { Locator } from '~/data/locators'
 export const locators: Locator[] = []
 const lctrIdx = getIdx(locators)
 useStorage('locator-index', lctrIdx)
-const locator = computed(() => locators[get(lctrIdx)])
+const locator = computed(() => locators[lctrIdx.value])
 
 const title = useTitle()
 watchEffect(() => {
-  set(title, get(locator).name)
+  title.value = locator.value.name
 })
 
 const q = ref('')
 const iptRef = useTemplateRef('ipt')
 onStartTyping(() => {
-  get(iptRef)?.focus()
+  iptRef.value?.focus()
 })
 watch(q, () => {
-  if (get(q) === '' && get(onlyWallpaper_))
-    get(iptRef)?.blur()
+  if (q.value === '' && onlyWallpaper_.value)
+    iptRef.value?.blur()
 })
 
 function go() {
-  search(get(locator).rawurl, get(q))
-  set(q, '')
+  search(locator.value.rawurl, q.value)
+  q.value = ''
 }
 
-const cmdMode = computed(() => get(q).trim().startsWith('>'))
+const cmdMode = computed(() => q.value.trim().startsWith('>'))
 watchEffect(() => {
   console.log(`cmdMode: ${cmdMode.value ? 'on' : 'off'}`)
 })
 
 hotkey({
   shift_tab() {
-    set(lctrIdx, get(lctrIdx) - 1)
+    lctrIdx.value--
   },
   tab() {
-    set(lctrIdx, get(lctrIdx) + 1)
+    lctrIdx.value++
   },
 }, iptRef)
 hotkey({
   tab() {
-    get(iptRef)?.focus()
+    iptRef.value?.focus()
   },
 })
 </script>

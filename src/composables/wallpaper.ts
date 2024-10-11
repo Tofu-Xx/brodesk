@@ -17,12 +17,12 @@ export async function readyNext() {
   const { data } = await useFetch(imgUrl).blob()
   const { base64 } = useBase64(data as any)
   whenever(base64, () => {
-    get(base64Wallpapers_).push(get(base64))
+    base64Wallpapers_.value.push(base64.value)
   })
 }
 
-watch(() => get(base64Wallpapers_).length, async () => {
-  if (get(base64Wallpapers_).length < 3) {
+watch(() => base64Wallpapers_.value.length, async () => {
+  if (base64Wallpapers_.value.length < 3) {
     console.log('ready next')
     await readyNext()
     console.log('ready next done')

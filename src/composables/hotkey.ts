@@ -9,29 +9,10 @@ export function hotkey(keys: any, el?: any) {
   const activeElement = useActiveElement()
   watch(magic.current, () => {
     for (const key in keys) {
-      if ((el ? get(activeElement) === get(el) : true) && get(magic[key])) {
+      if ((el ? activeElement.value === el.value : true) && magic[key].value) {
         keys[key]()
         break
       }
     }
   }, { immediate: true })
 }
-
-// const { tab, shift_tab } = useMagicKeys({
-//   passive: false,
-//   onEventFired(e) {
-//     if (e.key === 'Tab')
-//       e.preventDefault()
-//   },
-// })
-// const activeElement = useActiveElement()
-// watchEffect(() => {
-//   if (get(activeElement) === get(iptRef)) {
-//     if (get(shift_tab))
-//       set(lctrIdx, get(lctrIdx) - 1)
-//     else if (get(tab))
-//       set(lctrIdx, get(lctrIdx) + 1)
-//   }
-//   else if (get(tab))
-//     get(iptRef)?.focus()
-// })
