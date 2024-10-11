@@ -2,7 +2,6 @@
 import type { Locator } from '~/data/locators'
 
 export const locators: Locator[] = []
-// const idx = ref(0)
 const lctrIdx = getIdx(locators)
 useStorage('locator-index', lctrIdx)
 const locator = computed(() => locators[get(lctrIdx)])
