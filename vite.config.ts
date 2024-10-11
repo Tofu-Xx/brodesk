@@ -39,12 +39,12 @@ export default defineConfig({
       imports: [
         'vue',
         '@vueuse/core',
-        {
-          '@vueuse/core': [
-            'get',
-            'set',
-          ],
-        },
+        // {
+        //   '@vueuse/core': [
+        //     'get',
+        //     'set',
+        //   ],
+        // },
       ],
       dts: true,
       dirs: [

@@ -1,7 +1,7 @@
 export function getIdx(arr: any[]) {
   const idx = ref(0)
   return computed({
-    get: () => get(idx),
+    get: () => idx.value,
     set: (v: number) => {
       if (v >= arr.length)
         idx.value = 0
