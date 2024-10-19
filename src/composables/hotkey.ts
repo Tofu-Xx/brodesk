@@ -1,7 +1,7 @@
 export function hotkey(keys: any, el?: any) {
   const magic = useMagicKeys({
     passive: false,
-    onEventFired(e) {
+    onEventFired(e: KeyboardEvent) {
       if (e.key === 'Tab')
         e.preventDefault()
     },
