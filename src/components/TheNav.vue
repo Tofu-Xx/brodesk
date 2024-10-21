@@ -1,7 +1,7 @@
 <script setup lang="ts">
 const base64 = inject('base64')
 watch(pinWallpaper_, () => {
-  currentWallpaper_.value = pinWallpaper_.value ? base64 : null
+  currentWallpaper_.value = pinWallpaper_.value ? base64 as string : null
 }, { immediate: true })
 </script>
 
