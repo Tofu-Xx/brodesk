@@ -26,10 +26,10 @@ function go() {
   q.value = ''
 }
 
-const cmdMode = computed(() => q.value.trim().startsWith('>'))
-watchEffect(() => {
-  console.log(`cmdMode: ${cmdMode.value ? 'on' : 'off'}`)
-})
+// const cmdMode = computed(() => q.value.trim().startsWith('>'))
+// watchEffect(() => {
+//   console.log(`cmdMode: ${cmdMode.value ? 'on' : 'off'}`)
+// })
 
 hotkey({
   shift_tab() {
